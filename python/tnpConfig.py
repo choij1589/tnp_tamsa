@@ -187,10 +187,16 @@ class tnpConfig(object):
 
     def get_eff(self,ibin):
         f=ROOT.TFile("/".join([self.path,self.fit_file]))
+        print self.name+"/"+self.bins[ibin]['name']+"_Canv" 
         c=f.Get(self.name+"/"+self.bins[ibin]['name']+"_Canv")
         c.cd(1)
         words=c.GetPad(1).GetPrimitive("efficiency").GetLine(0).GetTitle().split()
         return float(words[2]),float(words[4])
+        #except Exception as e:
+        #    print "/".join([self.path,self.fit_file])
+        #    print self.name+"/"+self.bins[ibin]['name']+"_Canv"
+        #    print e
+        #    return 0, 0
 
     def make_eff_hist(self):
         ndim=min(len(self.vars),3)

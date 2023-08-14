@@ -58,6 +58,7 @@ class tnpFitter(object):
         work.factory("x[{},{}]".format(config.hist_range[0],config.hist_range[1]))
         x=work.var("x")
         matched=True if "genmatching" in method else None
+        #matched=True if config.isSim else None
         histPass=config.get_hist(ibin,True,genmatching=matched,genmass="genmass" in method)
         histFail=config.get_hist(ibin,False,genmatching=matched,genmass="genmass" in method)
         if not histPass:
@@ -108,7 +109,11 @@ class tnpFitter(object):
             work.factory("nBkgF[{},0.5,{}]".format( histFail.Integral()*0.5, histFail.Integral()*2) )
             work.factory("nSigF[{},0.5,{}]".format( histFail.Integral()*0.5, histFail.Integral()*2) )
             work.factory("SUM::pdfPass(nSigP*sigPass,nBkgP*bkgPass)")
-            work.factory("SUM::pdfFail(nSigF*sigFail,nBkgF*bkgFail)")
+            if "sigFracF[0.5, 0., 1.]" in config.fit_parameter:
+                print "addgaus fit"
+                work.factory("SUM::pdfFail(expr('sigFracF*nSigF', {sigFracF,nSigF})*sigFail, nBkgF*bkgFail, expr('(1.-sigFracF)*nSigF',{sigFracF,nSigF})*sigGaussFail)")
+            else:
+                work.factory("SUM::pdfFail(nSigF*sigFail,nBkgF*bkgFail)")
 
             ## fit_range
             x.setRange("fit_range",config.fit_range[0],config.fit_range[1])
@@ -200,7 +205,11 @@ class tnpFitter(object):
             fracPass=work.pdf("sigPass").createIntegral(xarg,rt.RooFit.NormSet(xarg),rt.RooFit.Range("fit_range")).getVal()
             fit_valp_fit_range=fit_valp*fracPass
             fit_errp_fit_range=fit_errp*fracPass
+            
             fracFail=work.pdf("sigFail").createIntegral(xarg,rt.RooFit.NormSet(xarg),rt.RooFit.Range("fit_range")).getVal()
+            if "sigFracF[0.5, 0., 1.]" in config.fit_parameter:
+                fracFail*=work.var("sigFracF").getVal()
+                #fracFail+=work.pdf("sigGaussFail").createIntegral(xarg,rt.RooFit.NormSet(xarg),rt.RooFit.Range("fit_range")).getVal()
             fit_valf_fit_range=fit_valf*fracFail
             fit_errf_fit_range=fit_errf*fracFail
             

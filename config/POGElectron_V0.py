@@ -1,0 +1,110 @@
+from tnpConfig import tnpConfig
+
+#### samples
+samples={
+    'data2016a':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016preVFP/data/SingleElectron',
+    'mi2016a':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016preVFP/mc/DYJetsToEE_M-50_massWgtFix_TuneCP5_13TeV-powhegMiNNLO-pythia8-photos',
+    'amc2016a':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016preVFP/mc/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8',
+    'mg2016a':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016preVFP/mc/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
+    'data2016b':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016postVFP/data/SingleElectron',
+    'mi2016b':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016postVFP/mc/DYJetsToEE_M-50_massWgtFix_TuneCP5_13TeV-powhegMiNNLO-pythia8-photos',
+    'amc2016b':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016postVFP/mc/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8',
+    'mg2016b':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2016postVFP/mc/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
+    'data2017':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2017/data/SingleElectron',
+    'mi2017':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2017/mc/DYJetsToEE_M-50_massWgtFix_TuneCP5_13TeV-powhegMiNNLO-pythia8-photos',
+    'amc2017':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2017/mc/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8',
+    'mg2017':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2017/mc/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
+    'data2018':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2018/data/EGamma',
+    'mi2018':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2018/mc/DYJetsToEE_M-50_massWgtFix_TuneCP5_13TeV-powhegMiNNLO-pythia8-photos',
+    'amc2018':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2018/mc/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8',
+    'mg2018':'/gv0/Users/hsseo/EgammaTnP/2021-08-24/UL2018/mc/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
+}
+
+#### binning
+binnings = {
+    "ID": [
+        {"var": "el_sc_eta",
+         "type": "float",
+         "bins": [-2.5, -2., -1.566, -1.4442, -0.8, 0., 0.8, 1.4442, 1.566, 2., 2.5],
+         "title": "#eta_{SC}"},
+        {"var": "el_pt",
+         "type": "float",
+         "bins": [10., 20., 35., 50., 100., 200., 500.],
+         "title": "p_{T} [GeV]"
+        }
+    ]
+}
+
+#### fit parameters
+fit_nominal = [
+    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,4.0])",
+    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+    #"Fit sigPass histPass_genmatching",
+    #"Fit sigFail histFail_genmatching",
+    #"SetConstant meanGaussP sigmaP meanGaussF sigmaF",
+    "RooCMSShape::bkgPass(x, aCMSP[50.,40.,80.],bCMSP[0.1, 0.01,0.25],cCMSP[0.05, 0.0001,0.2],peakCMSP[90.0])",
+    "RooCMSShape::bkgFail(x, aCMSF[50.,40.,80.],bCMSF[0.1, 0.01,0.25],cCMSF[0.05, 0.0001,0.2],peakCMSF[90.0])",
+    #"Fit bkgPass histPass_notgenmatching",
+    #"Fit bkgFail histPass_notgenmatching",
+    #"SetConstant aCMSP bCMSP cCMSP aCMSF bCMSF cCMSF"
+]
+fit_altsig = [
+    "HistPdf::sigPhysPass(x,histPass_genmatching_genmass,2)",
+    "HistPdf::sigPhysFail(x,histFail_genmatching_genmass,2)",
+    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.8,0.5,3.5])",
+    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[1.4,0.8,2.0])",
+    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+    "RooCMSShape::bkgPass(x, aCMSP[60., 50.,80.],bCMSP[0.03, 0.01,0.05],cCMSP[0.1, -0.1,1.0],peakCMSP[90.0])",
+    "RooCMSShape::bkgFail(x, aCMSF[61.5, 50.,80.],bCMSF[0.03, 0.01,0.05],cCMSF[0.03, -0.1,1.0],peakCMSF[90.0])",
+]
+
+#### definition
+expr = "tag_Ele_pt > 35 && abs(tag_sc_eta) < 2.17 && el_q*tag_Ele_q < 0 && (el_pt > 20 || tag_Ele_trigMVA > 0.92)"
+MVANoIsoWP90 = "passingMVA94Xwp90noisoV2"
+
+
+#### configs
+Configs = {}
+config = tnpConfig(
+    data = samples["data2016a"],
+    sim = samples["mg2016a"],
+    sim_weight = "totWeight",
+    sim_maxweight = 1e5,
+    sim_genmatching = "mcTrue",
+    sim_genmass = "mcMass",
+    tree = "tnpEleIDs/fitter_tree",
+    mass = "pair_mass",
+    bins = binnings['ID'],
+    expr = expr,
+    test = MVANoIsoWP90,
+    hist_nbins = 70,
+    hist_range = (55, 125),
+    method = "fit",
+    fit_parameter = fit_nominal,
+    fit_range = (60, 120),
+    systematic = [
+        [{"title": "altsig", "fit_parameter": fit_altsig}],
+    ],
+)
+Configs["POGMVANoIsoWP90_2016a"] = config.clone()
+Configs["POGMVANoIsoWP90_2016b"] = config.clone(
+    data = samples["data2016b"],
+    sim = samples["mg2016b"],
+)
+Configs["POGMVANoIsoWP90_2017"] = config.clone(
+    data = samples["data2017"],
+    sim = samples["mg2017"],
+)
+Configs["POGMVANoIsoWP90_2018"] = config.clone(
+    data = samples["data2018"],
+    sim = samples["mg2018"],
+)
+
+if __name__ == "__main__":
+    for key in sorted(Configs.keys()):
+        print key

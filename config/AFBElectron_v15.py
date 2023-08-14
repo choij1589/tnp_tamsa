@@ -282,8 +282,6 @@ config=tnpConfig(
         [{'title':'prefireweight_up','sim_weight.replace':('prefireweight','prefireweight_up')},{'title':'prefireweight_down','sim_weight.replace':('prefireweight','prefireweight_down')}],
         [{'title':'zptweight','sim_weight.add':'*zptweight'}],
         [{'title':'z0weight','sim_weight.add':'*z0weight'}],
-    ],
-)
 Configs['2016a_MediumID_Plus']=config.clone(test='passingCutBasedMedium94XV2',option="fix_ptbelow20")
 Configs['2016a_SelQ_MediumID_Plus']=config.clone(
     expr='( passingCutBasedMedium94XV2 && tag_passHltEle27WPTightGsf&&tag_passingCutBasedTight94XV2 && tag_Ele_pt_cor>30 && el_q>0 )',

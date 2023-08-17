@@ -14,7 +14,7 @@ samples={
 
 #### binning
 binnings = {
-    "ID": [
+    "ID1718": [
         {"var": "el_sc_eta",
          "type": "float",
          "bins": [-2.5, -2., -1.566, -1.4442, -0.8, 0., 0.8, 1.4442, 1.566, 2., 2.5],
@@ -24,7 +24,7 @@ binnings = {
          "bins": [10., 20., 35., 50., 100., 200., 500.],
          "title": "p_{T} [GeV]"}
     ],
-    "ID16b": [
+    "ID16": [
         {"var": "el_sc_eta",
          "type": "float",
          "bins": [-2.5, -2., -1.566, -1.4442, -0.8, 0., 0.8, 1.4442, 1.566, 2., 2.5],
@@ -84,7 +84,7 @@ config = tnpConfig(
     sim_genmass = "mcMass",
     tree = "tnpEleIDs/fitter_tree",
     mass = "pair_mass",
-    bins = binnings['ID'],
+    bins = binnings['ID16'],
     expr = expr,
     test = MVANoIsoWP90,
     hist_nbins = 64,
@@ -100,15 +100,16 @@ Configs["POGMVANoIsoWP90_2016a"] = config.clone()
 Configs["POGMVANoIsoWP90_2016b"] = config.clone(
     data = samples["data2016b"],
     sim = samples["mg2016b"],
-    bins = binnings['ID16b']
 )
 Configs["POGMVANoIsoWP90_2017"] = config.clone(
     data = samples["data2017"],
     sim = samples["mg2017"],
+    bins = binnings["ID1718"]
 )
 Configs["POGMVANoIsoWP90_2018"] = config.clone(
     data = samples["data2018"],
     sim = samples["mg2018"],
+    bins = binnings["ID1718"]
 )
 
 if __name__ == "__main__":

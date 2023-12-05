@@ -58,25 +58,25 @@ binnings = {
 fit_nominal = [
     "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
     "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
-    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.1,0.1,4.0])",
-    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,0.7])",
+    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.4,0.4,4.0])",
+    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.05,0.05,4.0])",
     "FCONV::sigPass(x, sigPhysPass , sigResPass)",
     "FCONV::sigFail(x, sigPhysFail , sigResFail)",
     "RooCMSShape::bkgPass(x, aCMSP[50.,40.,80.],bCMSP[0.1, 0.01,0.25],cCMSP[0.05, 0.0001,0.2],peakCMSP[90.0])",
-    "RooCMSShape::bkgFail(x, aCMSF[50.,40.,80.],bCMSF[0.1, 0.01,0.25],cCMSF[0.05, 0.0001,0.2],peakCMSF[90.0])",
+    "RooCMSShape::bkgFail(x, aCMSF[50.,30.,100.],bCMSF[0.1, 0.01,0.5],cCMSF[0.05, 0.0001,0.4],peakCMSF[90.0])",
 ]
 
 fit_altsig = [
     "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
     "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
-    "RooCBShape::sigResPass(x,meanP[-0.0,-5.0,5.0],sigmaP[1,0.5,10.0],alphaP[2.0,1.2,3.5],nP[3,-5,5])",
+    "RooCBShape::sigResPass(x,meanP[-0.0,-5.0,5.0],sigmaP[1,0.4,10.0],alphaP[2.0,1.2,3.5],nP[3,-5,5])",
     "RooCBShape::sigResFail(x,meanF[-0.0,-5.0,5.0],sigmaF[1,0.3,10.0],alphaF[2.0,1.2,3.5],nF[3,-5,5])",
     "FCONV::sigPass(x, sigPhysPass , sigResPass)",
     "FCONV::sigFail(x, sigPhysFail , sigResFail)",
     #"sigFracF[0.5, 0., 1.]",
     #"Gaussian::sigGaussFail(x,meanGF[80.,70.,100.],sigmaGF[15,5.,125.])",
-    "RooCMSShape::bkgPass(x, aCMSP[60., 50.,80.],bCMSP[0.03, 0.01,0.05],cCMSP[0.1, -0.1,1.0],peakCMSP[90.0])",
-    "RooCMSShape::bkgFail(x, aCMSF[61.5, 50.,80.],bCMSF[0.03, 0.01,0.05],cCMSF[0.03, -0.1,1.0],peakCMSF[90.0])",
+    "RooCMSShape::bkgPass(x, aCMSP[60., 50.,100.],bCMSP[0.03, 0.01,0.5],cCMSP[0.03, -0.1,1.0],peakCMSP[90.0])",
+    "RooCMSShape::bkgFail(x, aCMSF[60., 50.,100.],bCMSF[0.03, 0.01,0.5],cCMSF[0.03, -0.1,1.0],peakCMSF[90.0])",
 ]
 
 fit_altbkg = [

@@ -1,3 +1,9 @@
 [submodule "www"]
 	path = www
 	url = git@github.com:choij1589/www.git
+[submodule "tdr-style"]
+	path = tdr-style
+	url = git@github.com:choij1589/tdr-style.git
+[submodule "python/tdr-style"]
+	path = python/tdr-style
+	url = git@github.com:choij1589/tdr-style.git

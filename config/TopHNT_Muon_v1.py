@@ -143,7 +143,7 @@ Configs["NUM_TopHNT_DEN_TrackerMuons_2018"] = config.clone(
     data = samples["data2018"],
     sim = samples["mi2018"],
     expr = expr_18UL,
-    systemtaics = [
+    systematic = [
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "tagIso0p3", "expr": expr_18UL.replace("0.2*tag_pt", "0.3*tag_pt")},
          {"title": "tagIso0p1", "expr": expr_18UL.replace("0.2*tag_pt", "0.1*tag_pt")}],
@@ -210,7 +210,7 @@ Configs["NUM_Mu17Leg1_DEN_TopHNT_2018"] = configLeg1.clone(
     expr = expr_18UL+" && "+TopHNT,
     test = Mu17Leg1_1718,
     bins = binnings["Mu17_1718"],
-    systemtaics = [
+    systematic = [
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "tagIso0p3", "expr": expr_18UL.replace("0.2*tag_pt", "0.3*tag_pt")+" && "+TopHNT},
          {"title": "tagIso0p1", "expr": expr_18UL.replace("0.2*tag_pt", "0.1*tag_pt")+" && "+TopHNT}],
@@ -275,7 +275,7 @@ Configs["NUM_Mu8Leg2_DEN_TopHNT_2018"] = configLeg2.clone(
     sim = samples["mi2018"],
     expr = expr_18UL+" && "+TopHNT,
     test = Mu8Leg2_1718,
-    systemtaics = [
+    systematic = [
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "tagIso0p3", "expr": expr_18UL.replace("0.2*tag_pt", "0.3*tag_pt")+" && "+TopHNT},
          {"title": "tagIso0p1", "expr": expr_18UL.replace("0.2*tag_pt", "0.1*tag_pt")+" && "+TopHNT}],
@@ -289,4 +289,4 @@ Configs["NUM_Mu8Leg2_DEN_TopHNT_2018"] = configLeg2.clone(
 
 if __name__ == "__main__":
     for key in sorted(Configs.keys()):
-        print key
+        print(key)

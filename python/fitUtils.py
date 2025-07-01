@@ -50,7 +50,7 @@ class tnpFitter(object):
         rt.RooMsgService.instance().setGlobalKillBelow(rt.RooFit.ERROR)
         
     def run(self,ibin):
-        print "Fit ibin =",ibin
+        print("Fit ibin =",ibin)
         config=self.config
         method=config.method.split()
         
@@ -62,10 +62,10 @@ class tnpFitter(object):
         histPass=config.get_hist(ibin,True,genmatching=matched,genmass="genmass" in method)
         histFail=config.get_hist(ibin,False,genmatching=matched,genmass="genmass" in method)
         if not histPass:
-            print "No hist "+config.get_histname(ibin,True,genmatching=matched,genmass="genmass" in method)+" in "+config.hist_file
+            print("No hist "+config.get_histname(ibin,True,genmatching=matched,genmass="genmass" in method)+" in "+config.hist_file)
             exit(1)
         if not histFail:
-            print "No hist "+config.get_histname(ibin,True,genmatching=matched,genmass="genmass" in method)+" in "+config.hist_file
+            print("No hist "+config.get_histname(ibin,True,genmatching=matched,genmass="genmass" in method)+" in "+config.hist_file)
             exit(1)
         work.Import(rt.RooDataHist("histPass","histPass",x,histPass))
         work.Import(rt.RooDataHist("histFail","histFail",x,histFail))
@@ -110,7 +110,7 @@ class tnpFitter(object):
             work.factory("nSigF[{},0.5,{}]".format( histFail.Integral()*0.5, histFail.Integral()*2) )
             work.factory("SUM::pdfPass(nSigP*sigPass,nBkgP*bkgPass)")
             if "sigFracF[0.5, 0., 1.]" in config.fit_parameter:
-                print "addgaus fit"
+                print("addgaus fit")
                 work.factory("SUM::pdfFail(expr('sigFracF*nSigF', {sigFracF,nSigF})*sigFail, nBkgF*bkgFail, expr('(1.-sigFracF)*nSigF',{sigFracF,nSigF})*sigGaussFail)")
             else:
                 work.factory("SUM::pdfFail(nSigF*sigFail,nBkgF*bkgFail)")
@@ -295,5 +295,5 @@ class tnpFitter(object):
             if result.status()==0:
                 return result
 
-        print "Warning: non-zero fit status {}".format(result.status())
+        print("Warning: non-zero fit status {}".format(result.status()))
         return result

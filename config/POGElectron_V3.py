@@ -114,4 +114,4 @@ Configs["POGMVANoIsoWP90_2018"] = config.clone(
 
 if __name__ == "__main__":
     for key in sorted(Configs.keys()):
-        print key
+        print(key)

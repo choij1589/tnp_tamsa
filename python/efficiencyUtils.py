@@ -83,7 +83,7 @@ class Efficiency(object):
     def clone(self):
         return copy.deepcopy(self)
     
-    def __div__(self,other):
+    def __truediv__(self,other):
         out=ScaleFactor(val=self.val,err=self.err)
         if self.val==0 or other.val==0:
             out.val=0.

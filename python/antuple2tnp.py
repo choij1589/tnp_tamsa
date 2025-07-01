@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os,sys,math
 from array import array
@@ -55,7 +55,7 @@ def process_e(oldfile,newfile):
     nentry=tree.GetEntries()
     #nentry=10000
     for ientry in range(nentry):
-        if ientry%(nentry/10)==0: print ientry,"/",nentry
+        if ientry%(nentry//10)==0: print(ientry,"/",nentry)
         sys.stdout.flush()
 
         tree.GetEntry(ientry)
@@ -174,7 +174,7 @@ def process_u(oldfile,newfile):
     nentry=tree.GetEntries()
     #nentry=10000
     for ientry in range(nentry):
-        if ientry%(nentry/10)==0: print ientry,"/",nentry
+        if ientry%(nentry//10)==0: print(ientry,"/",nentry)
         sys.stdout.flush()
 
         tree.GetEntry(ientry)
@@ -238,7 +238,7 @@ def process_u(oldfile,newfile):
     return
 
 def convert(infile,outfile):
-    print infile,"-->",outfile
+    print(infile,"-->",outfile)
     oldfile=ROOT.TFile(infile)
     if os.path.dirname(outfile)!='':
         os.system("mkdir -p {}".format(os.path.dirname(outfile)))
@@ -262,6 +262,6 @@ if __name__=="__main__":
     elif args.infile.endswith(".root") and args.outfile.endswith(".root"):
         convert(args.infile,args.outfile)
     else:
-        print "Wrong arguments ",args.infile,args.outfile
+        print("Wrong arguments ",args.infile,args.outfile)
         exit(1)
         

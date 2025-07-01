@@ -112,7 +112,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
     elif os.path.isfile(configs[0].sample):
         rootfiles=[configs[0].sample]
     else:
-        print "Error: {} doesn't exists".format(configs[0].sample)
+        print("Error: {} doesn't exists".format(configs[0].sample))
         exit(1)
     if len(rootfiles)<njob:
         split_events=True
@@ -123,7 +123,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
     hist_file=configs[0].path+"/"+configs[0].hist_file.replace(".root",".d/job{}.root".format(ijob))
 
     for p in rootfiles:
-        print ' adding rootfile: ', p
+        print(' adding rootfile: ', p)
         tree.Add(p)
 
     #################################
@@ -180,7 +180,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
                 hists[ic][ib]+=[ROOT.TH1D(histname,bins[ib]['title'],config.hist_nbins,config.hist_range[0],config.hist_range[1])]
 
 
-    print "Total {} hists = {} configs * {} bins * {} types".format(len(hists)*len(hists[0])*len(hists[0][0]),len(hists),len(hists[0]),len(hists[0][0]))
+    print("Total {} hists = {} configs * {} bins * {} types".format(len(hists)*len(hists[0])*len(hists[0][0]),len(hists),len(hists[0]),len(hists[0][0])))
     notify_list=ROOT.TList()
     for formular in expr_formulars+bin_formulars+[f for ff in weight_formulars for f in ff]+[preselection]:
         if formular is None: continue
@@ -221,7 +221,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
     nevents = tree.GetEntries()
     if reduction != 1:
         nevents = int(nevents/reduction)
-        print "reduction: {} -> {}".format(tree.GetEntries(),nevents)
+        print("reduction: {} -> {}".format(tree.GetEntries(),nevents))
 
     startevent = 0
     endevent = nevents
@@ -238,7 +238,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
     for index in range(startevent,endevent):
         if index >= nevents: break
         if (index-startevent) % frac_of_nevts == 0:
-            print index-startevent,"/",endevent-startevent
+            print(index-startevent,"/",endevent-startevent)
             sys.stdout.flush()
 
         tree.GetEntry(index)
@@ -261,23 +261,23 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
                 weight = weight_formulars[ic][ih].EvalInstance()
                 if not weight: continue
                 if math.isnan(weight):
-                    print 'Error: nan weight!!! continue'
+                    print('Error: nan weight!!! continue')
                     continue
                 if math.isinf(weight):
-                    print 'Error: inf weight!!! continue'
+                    print('Error: inf weight!!! continue')
                     continue
                 if hasattr(configs[ic],"maxweight") and abs(weight)>configs[ic].maxweight:
                     weight=math.copysign(configs[ic].maxweight,weight)
                 hists[ic][ib][ih].Fill(getattr(tree,xs[ic][ih]),expr*weight)
 
     te=time.time()
-    print "Event loop time", te-ts, "seconds"
+    print("Event loop time", te-ts, "seconds")
     sys.stdout.flush()
     #####################
     # Deal with the Hists
     #####################
     ts=time.time()
-    print "Writing", len([h for hhh in hists for hh in hhh for h in hh]), "hists"
+    print("Writing", len([h for hhh in hists for hh in hhh for h in hh]), "hists")
     sys.stdout.flush()
     for hist in [h for hhh in hists for hh in hhh for h in hh]:
         dirname=os.path.dirname(hist.GetName())
@@ -287,7 +287,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
         outfile.cd(dirname)
         hist.Write(basename)
     te=time.time()
-    print "Writing time", te-ts, "seconds"
+    print("Writing time", te-ts, "seconds")
     sys.stdout.flush()
 
     ##########

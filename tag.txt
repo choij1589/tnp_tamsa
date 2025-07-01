@@ -1,0 +1,109 @@
+******************************************************************************
+*Tree    :fitter_tree: fitter_tree                                            *
+*Entries :  7501856 : Total =      4979915974 bytes  File  Size = 2990265526 *
+*        :          : Tree compression factor =   1.67                       *
+******************************************************************************
+*Br    0 :tag_Ele_3charge : tag_Ele_3charge/F                                *
+*Entries :  7501856 : Total  Size=   30181951 bytes  File Size  =    1328494 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  22.69     *
+*............................................................................*
+*Br    1 :tag_Ele_5x5_r9 : tag_Ele_5x5_r9/F                                  *
+*Entries :  7501856 : Total  Size=   30180349 bytes  File Size  =   25073333 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.20     *
+*............................................................................*
+*Br    2 :tag_Ele_abseta : tag_Ele_abseta/F                                  *
+*Entries :  7501856 : Total  Size=   30180349 bytes  File Size  =   26976314 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br    3 :tag_Ele_e : tag_Ele_e/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   26429686 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.14     *
+*............................................................................*
+*Br    4 :tag_Ele_et : tag_Ele_et/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   25699272 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.17     *
+*............................................................................*
+*Br    5 :tag_Ele_eta : tag_Ele_eta/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   27785265 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br    6 :tag_Ele_phi : tag_Ele_phi/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   27897375 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br    7 :tag_Ele_pt : tag_Ele_pt/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   25699272 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.17     *
+*............................................................................*
+*Br    8 :tag_Ele_q : tag_Ele_q/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =    3215748 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   9.37     *
+*............................................................................*
+*Br    9 :tag_sc_abseta : tag_sc_abseta/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   26969143 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   10 :tag_sc_e  : tag_sc_e/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   26370798 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.14     *
+*............................................................................*
+*Br   11 :tag_sc_et : tag_sc_et/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   25833934 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.17     *
+*............................................................................*
+*Br   12 :tag_sc_eta : tag_sc_eta/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   27780174 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.09     *
+*............................................................................*
+*Br   13 :tag_Ele_Iso122X : tag_Ele_Iso122X/F                                *
+*Entries :  7501856 : Total  Size=   30181951 bytes  File Size  =   14680533 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.05     *
+*............................................................................*
+*Br   14 :tag_Ele_IsoMVA94X : tag_Ele_IsoMVA94X/F                            *
+*Entries :  7501856 : Total  Size=   30185155 bytes  File Size  =   23594482 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.28     *
+*............................................................................*
+*Br   15 :tag_Ele_IsoMVA94XV2 : tag_Ele_IsoMVA94XV2/F                        *
+*Entries :  7501856 : Total  Size=   30188359 bytes  File Size  =   11354414 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.66     *
+*............................................................................*
+*Br   16 :tag_Ele_dxy : tag_Ele_dxy/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   28143082 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.07     *
+*............................................................................*
+*Br   17 :tag_Ele_dz : tag_Ele_dz/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   28320475 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.06     *
+*............................................................................*
+*Br   18 :tag_Ele_hzzMVA80X : tag_Ele_hzzMVA80X/F                            *
+*Entries :  7501856 : Total  Size=   30185155 bytes  File Size  =   23945866 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.26     *
+*............................................................................*
+*Br   19 :tag_Ele_noIso122X : tag_Ele_noIso122X/F                            *
+*Entries :  7501856 : Total  Size=   30185155 bytes  File Size  =   15294352 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.97     *
+*............................................................................*
+*Br   20 :tag_Ele_noIsoMVA94X : tag_Ele_noIsoMVA94X/F                        *
+*Entries :  7501856 : Total  Size=   30188359 bytes  File Size  =   24324533 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.24     *
+*............................................................................*
+*Br   21 :tag_Ele_noIsoMVA94XV2 : tag_Ele_noIsoMVA94XV2/F                    *
+*Entries :  7501856 : Total  Size=   30191563 bytes  File Size  =   13125767 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.30     *
+*............................................................................*
+*Br   22 :tag_Ele_nonTrigMVA80X : tag_Ele_nonTrigMVA80X/F                    *
+*Entries :  7501856 : Total  Size=   30191563 bytes  File Size  =   24431552 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.23     *
+*............................................................................*
+*Br   23 :tag_Ele_seedGain : tag_Ele_seedGain/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =     416868 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  72.33     *
+*............................................................................*
+*Br   24 :tag_Ele_trigMVA : tag_Ele_trigMVA/F                                *
+*Entries :  7501856 : Total  Size=   30181951 bytes  File Size  =   23591286 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.28     *
+*............................................................................*
+*Br   25 :tag_el_sip : tag_el_sip/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   27038685 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*

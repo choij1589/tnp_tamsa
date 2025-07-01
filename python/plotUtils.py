@@ -283,7 +283,11 @@ def GetSystematicPlot(filename,axis="x",ibin=None,ymin=None):
     while len(values)>7 and numpy.mean(values)+3*numpy.std(values)<values[-1]:
         values=values[:-1]
     ymax=2*numpy.mean(values)
-    if ymax<0.01:
+    
+    # Handle NaN or invalid values
+    if math.isnan(ymax) or ymax <= 0:
+        ymax = 0.1  # Default fallback value
+    elif ymax<0.01:
         ymax=math.ceil(ymax*400)/400.-0.0001
     else:
         ymax=math.ceil(ymax*100)/100.-0.001
@@ -308,7 +312,7 @@ def SaveSystematicPlots(filename):
 
     h=EfficiencyHist(filename+":data").MakeTH()
     if not h:
-        print "No data in "+filename
+        print("No data in "+filename)
         return
     plotdir="/".join([os.path.dirname(filename),"plots/summary"])
     if not os.path.exists(plotdir):
@@ -341,7 +345,7 @@ def GetEfficiencyPlot(path,axis="y",ibin=None):
             iset=int(m.group(1))
             imem=int(m.group(2))
         else:
-            print "Wrong suffix format",suffix
+            print("Wrong suffix format",suffix)
             exit(1)
     else:
         filename=path
@@ -481,7 +485,7 @@ def SaveEfficiencyPlots(filename):
 
     h=EfficiencyHist(filename+":data").MakeTH()
     if not h:
-        print "No data in "+filename
+        print("No data in "+filename)
         return
     plotdir="/".join([os.path.dirname(filename),"plots/summary"])
     if not os.path.exists(plotdir):
@@ -564,11 +568,11 @@ def CompareEfficiencyPlots(path1,path2,args=None):
         filename2,suffix2=path2,""
     h1=EfficiencyHist(filename1+":data").MakeTH()
     if not h1:
-        print "No data in "+filename1
+        print("No data in "+filename1)
         return
     h2=EfficiencyHist(filename2+":data").MakeTH()
     if not h2:
-        print "No data in "+filename2
+        print("No data in "+filename2)
         return
     h=h1
     plotdir="compare"
@@ -618,9 +622,9 @@ def PrintEfficiency(path):
     data=EfficiencyHist(path+":data")
     sim=EfficiencyHist(path+":sim")
     sf=EfficiencyHist(path+":sf")
-    print data.ProjectionY()
-    print sim.ProjectionY()
-    print sf.ProjectionY()
+    print(data.ProjectionY())
+    print(sim.ProjectionY())
+    print(sf.ProjectionY())
     return
     
 if __name__=="__main__":

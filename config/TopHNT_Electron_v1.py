@@ -289,4 +289,4 @@ Configs["HLTEl12_2018"] = config_HLT.clone(
 
 if __name__ == "__main__":
     for key in sorted(Configs.keys()):
-        print key
+        print(key)

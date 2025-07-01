@@ -1,0 +1,397 @@
+******************************************************************************
+*Tree    :fitter_tree: fitter_tree                                            *
+*Entries :  7501856 : Total =      4979915974 bytes  File  Size = 2990265526 *
+*        :          : Tree compression factor =   1.67                       *
+******************************************************************************
+*Br    0 :el_1overEminus1overP : el_1overEminus1overP/F                      *
+*Entries :  7501856 : Total  Size=   30189961 bytes  File Size  =   27954803 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br    1 :el_3charge : el_3charge/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =    2371400 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  12.71     *
+*............................................................................*
+*Br    2 :el_5x5_e1x5 : el_5x5_e1x5/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   27083603 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br    3 :el_5x5_e2x5 : el_5x5_e2x5/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   26961208 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br    4 :el_5x5_e5x5 : el_5x5_e5x5/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   26948111 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br    5 :el_5x5_hoe : el_5x5_hoe/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   23665122 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.27     *
+*............................................................................*
+*Br    6 :el_5x5_r9 : el_5x5_r9/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   25521594 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.18     *
+*............................................................................*
+*Br    7 :el_5x5_sieie : el_5x5_sieie/F                                      *
+*Entries :  7501856 : Total  Size=   30177145 bytes  File Size  =   26153309 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.15     *
+*............................................................................*
+*Br    8 :el_5x5_sieip : el_5x5_sieip/F                                      *
+*Entries :  7501856 : Total  Size=   30177145 bytes  File Size  =   28186762 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.07     *
+*............................................................................*
+*Br    9 :el_abseta : el_abseta/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   27148225 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   10 :el_chIso  : el_chIso/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   16813761 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.79     *
+*............................................................................*
+*Br   11 :el_dEtaIn : el_dEtaIn/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   23641275 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.27     *
+*............................................................................*
+*Br   12 :el_dEtaSeed : el_dEtaSeed/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   27019525 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   13 :el_dPhiIn : el_dPhiIn/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   24953141 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.21     *
+*............................................................................*
+*Br   14 :el_dr03EcalRecHitSumEt : el_dr03EcalRecHitSumEt/F                  *
+*Entries :  7501856 : Total  Size=   30193165 bytes  File Size  =   27039054 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   15 :el_dr03TkSumPt : el_dr03TkSumPt/F                                  *
+*Entries :  7501856 : Total  Size=   30180349 bytes  File Size  =   13358225 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.26     *
+*............................................................................*
+*Br   16 :el_e      : el_e/F                                                 *
+*Entries :  7501856 : Total  Size=   30164329 bytes  File Size  =   26898122 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   17 :el_e1x5   : el_e1x5/F                                              *
+*Entries :  7501856 : Total  Size=   30169135 bytes  File Size  =   27108769 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   18 :el_e2x5   : el_e2x5/F                                              *
+*Entries :  7501856 : Total  Size=   30169135 bytes  File Size  =   27028005 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   19 :el_e5x5   : el_e5x5/F                                              *
+*Entries :  7501856 : Total  Size=   30169135 bytes  File Size  =   27048910 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   20 :el_ecalDriven : el_ecalDriven/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =    2151330 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  14.01     *
+*............................................................................*
+*Br   21 :el_ecalEnergy : el_ecalEnergy/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   26913903 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   22 :el_ecalIso : el_ecalIso/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   21481039 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.40     *
+*............................................................................*
+*Br   23 :el_eelepout : el_eelepout/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =   26992037 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   24 :el_eoverp_wES : el_eoverp_wES/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   26376407 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.14     *
+*............................................................................*
+*Br   25 :el_ep     : el_ep/F                                                *
+*Entries :  7501856 : Total  Size=   30165931 bytes  File Size  =   26297385 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.15     *
+*............................................................................*
+*Br   26 :el_et     : el_et/F                                                *
+*Entries :  7501856 : Total  Size=   30165931 bytes  File Size  =   26794558 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   27 :el_eta    : el_eta/F                                               *
+*Entries :  7501856 : Total  Size=   30167533 bytes  File Size  =   27936818 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   28 :el_etaW   : el_etaW/F                                              *
+*Entries :  7501856 : Total  Size=   30169135 bytes  File Size  =   26762697 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.13     *
+*............................................................................*
+*Br   29 :el_fbrem  : el_fbrem/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   27437596 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.10     *
+*............................................................................*
+*Br   30 :el_found_hits : el_found_hits/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =    7017942 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   4.30     *
+*............................................................................*
+*Br   31 :el_gsfchi2 : el_gsfchi2/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   26977286 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   32 :el_gsfhits : el_gsfhits/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =    6627686 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   4.55     *
+*............................................................................*
+*Br   33 :el_hcalIso : el_hcalIso/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   25287892 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.19     *
+*............................................................................*
+*Br   34 :el_hoe    : el_hoe/F                                               *
+*Entries :  7501856 : Total  Size=   30167533 bytes  File Size  =   23623856 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.28     *
+*............................................................................*
+*Br   35 :el_hoe_bc : el_hoe_bc/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   14625107 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.06     *
+*............................................................................*
+*Br   36 :el_hoe_depth1 : el_hoe_depth1/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   21237294 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.42     *
+*............................................................................*
+*Br   37 :el_hoe_depth2 : el_hoe_depth2/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   18272901 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.65     *
+*............................................................................*
+*Br   38 :el_hoe_depth3 : el_hoe_depth3/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   10570240 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.85     *
+*............................................................................*
+*Br   39 :el_hoe_depth4 : el_hoe_depth4/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =    5852811 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   5.15     *
+*............................................................................*
+*Br   40 :el_hoe_depth5 : el_hoe_depth5/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =    3120633 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   9.66     *
+*............................................................................*
+*Br   41 :el_hoe_depth6 : el_hoe_depth6/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =    1812489 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  16.63     *
+*............................................................................*
+*Br   42 :el_hoe_depth7 : el_hoe_depth7/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =     847192 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  35.58     *
+*............................................................................*
+*Br   43 :el_hoe_depth8 : el_hoe_depth8/F                                    *
+*Entries :  7501856 : Total  Size=   30178747 bytes  File Size  =   23635072 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.28     *
+*............................................................................*
+*Br   44 :el_isGap  : el_isGap/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =    2189705 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  13.76     *
+*............................................................................*
+*Br   45 :el_lost_hits : el_lost_hits/F                                      *
+*Entries :  7501856 : Total  Size=   30177145 bytes  File Size  =    3067692 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   9.83     *
+*............................................................................*
+*Br   46 :el_neuIso : el_neuIso/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   18394876 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.64     *
+*............................................................................*
+*Br   47 :el_phi    : el_phi/F                                               *
+*Entries :  7501856 : Total  Size=   30167533 bytes  File Size  =   27887075 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   48 :el_phiW   : el_phiW/F                                              *
+*Entries :  7501856 : Total  Size=   30169135 bytes  File Size  =   27054312 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   49 :el_phoIso : el_phoIso/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   20064672 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.50     *
+*............................................................................*
+*Br   50 :el_pt     : el_pt/F                                                *
+*Entries :  7501856 : Total  Size=   30165931 bytes  File Size  =   26794558 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   51 :el_q      : el_q/F                                                 *
+*Entries :  7501856 : Total  Size=   30164329 bytes  File Size  =    3207649 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   9.39     *
+*............................................................................*
+*Br   52 :el_r9     : el_r9/F                                                *
+*Entries :  7501856 : Total  Size=   30165931 bytes  File Size  =   23155810 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.30     *
+*............................................................................*
+*Br   53 :el_relIso03_dB : el_relIso03_dB/F                                  *
+*Entries :  7501856 : Total  Size=   30180349 bytes  File Size  =   21285752 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.42     *
+*............................................................................*
+*Br   54 :el_sc_abseta : el_sc_abseta/F                                      *
+*Entries :  7501856 : Total  Size=   30177145 bytes  File Size  =   27147683 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   55 :el_sc_e   : el_sc_e/F                                              *
+*Entries :  7501856 : Total  Size=   30169135 bytes  File Size  =   26895192 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   56 :el_sc_esE : el_sc_esE/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   11220117 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.69     *
+*............................................................................*
+*Br   57 :el_sc_et  : el_sc_et/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   26889147 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   58 :el_sc_eta : el_sc_eta/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   27946810 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   59 :el_sc_phi : el_sc_phi/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   27893498 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   60 :el_sc_rawE : el_sc_rawE/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   26932101 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   61 :el_seed_e : el_seed_e/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   27053756 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   62 :el_sieie  : el_sieie/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   25597640 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.18     *
+*............................................................................*
+*Br   63 :el_sumPUPt : el_sumPUPt/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   26898837 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   64 :el_tk_eta : el_tk_eta/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   27941264 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   65 :el_tk_phi : el_tk_phi/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   27888779 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   66 :el_tk_pt  : el_tk_pt/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   27062954 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   67 :el_trkIso : el_trkIso/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   16210621 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.86     *
+*............................................................................*
+*Br   68 :el_5x5_circularity : el_5x5_circularity/F                          *
+*Entries :  7501856 : Total  Size=   30186757 bytes  File Size  =   26448226 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.14     *
+*............................................................................*
+*Br   69 :el_IoEmIop : el_IoEmIop/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   28425846 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.06     *
+*............................................................................*
+*Br   70 :el_IsoMVA94X : el_IsoMVA94X/F                                      *
+*Entries :  7501856 : Total  Size=   30177145 bytes  File Size  =   27329655 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.10     *
+*............................................................................*
+*Br   71 :el_IsoMVA94XV2 : el_IsoMVA94XV2/F                                  *
+*Entries :  7501856 : Total  Size=   30180349 bytes  File Size  =   27292568 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.10     *
+*............................................................................*
+*Br   72 :el_closestJetDeepCsv : el_closestJetDeepCsv/F                      *
+*Entries :  7501856 : Total  Size=   30189961 bytes  File Size  =   23138368 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.30     *
+*............................................................................*
+*Br   73 :el_closestJetDeepFlavour : el_closestJetDeepFlavour/F              *
+*Entries :  7501856 : Total  Size=   30196369 bytes  File Size  =   27027318 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   74 :el_convVtxFitProb : el_convVtxFitProb/F                            *
+*Entries :  7501856 : Total  Size=   30185155 bytes  File Size  =    1247951 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  24.16     *
+*............................................................................*
+*Br   75 :el_dxy    : el_dxy/F                                               *
+*Entries :  7501856 : Total  Size=   30167533 bytes  File Size  =   28405413 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.06     *
+*............................................................................*
+*Br   76 :el_dz     : el_dz/F                                                *
+*Entries :  7501856 : Total  Size=   30165931 bytes  File Size  =   28610606 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.05     *
+*............................................................................*
+*Br   77 :el_gsfHits : el_gsfHits/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =    6627686 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   4.55     *
+*............................................................................*
+*Br   78 :el_hasMatchedConversion : el_hasMatchedConversion/F                *
+*Entries :  7501856 : Total  Size=   30194767 bytes  File Size  =     728020 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  41.43     *
+*............................................................................*
+*Br   79 :el_hzzMVA80X : el_hzzMVA80X/F                                      *
+*Entries :  7501856 : Total  Size=   30177145 bytes  File Size  =   25753434 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.17     *
+*............................................................................*
+*Br   80 :el_kfchi2 : el_kfchi2/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =   26247496 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.15     *
+*............................................................................*
+*Br   81 :el_kfhits : el_kfhits/F                                            *
+*Entries :  7501856 : Total  Size=   30172339 bytes  File Size  =    7974133 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   3.78     *
+*............................................................................*
+*Br   82 :el_leptonMva_TOP : el_leptonMva_TOP/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =   24574545 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.23     *
+*............................................................................*
+*Br   83 :el_leptonMva_ghent : el_leptonMva_ghent/F                          *
+*Entries :  7501856 : Total  Size=   30186757 bytes  File Size  =   25943770 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.16     *
+*............................................................................*
+*Br   84 :el_leptonMva_ttH : el_leptonMva_ttH/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =   26982143 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.12     *
+*............................................................................*
+*Br   85 :el_mHits  : el_mHits/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =    1970766 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  15.29     *
+*............................................................................*
+*Br   86 :el_miniIsoAll_fall17 : el_miniIsoAll_fall17/F                      *
+*Entries :  7501856 : Total  Size=   30189961 bytes  File Size  =   17798430 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.69     *
+*............................................................................*
+*Br   87 :el_miniIsoChg_fall17 : el_miniIsoChg_fall17/F                      *
+*Entries :  7501856 : Total  Size=   30189961 bytes  File Size  =   12868046 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   2.34     *
+*............................................................................*
+*Br   88 :el_noIsoMVA94X : el_noIsoMVA94X/F                                  *
+*Entries :  7501856 : Total  Size=   30180349 bytes  File Size  =   25943347 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.16     *
+*............................................................................*
+*Br   89 :el_noIsoMVA94XV2 : el_noIsoMVA94XV2/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =   27158290 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   90 :el_nonTrigMVA80X : el_nonTrigMVA80X/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =   25947152 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.16     *
+*............................................................................*
+*Br   91 :el_pf_pt  : el_pf_pt/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   15674464 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.92     *
+*............................................................................*
+*Br   92 :el_ptRatio : el_ptRatio/F                                          *
+*Entries :  7501856 : Total  Size=   30173941 bytes  File Size  =   25828946 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.17     *
+*............................................................................*
+*Br   93 :el_ptRel  : el_ptRel/F                                             *
+*Entries :  7501856 : Total  Size=   30170737 bytes  File Size  =   27154623 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   94 :el_relIso_fall17 : el_relIso_fall17/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =   19975901 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.51     *
+*............................................................................*
+*Br   95 :el_relPfLepIso03 : el_relPfLepIso03/F                              *
+*Entries :  7501856 : Total  Size=   30183553 bytes  File Size  =    2283094 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  13.21     *
+*............................................................................*
+*Br   96 :el_seedGain : el_seedGain/F                                        *
+*Entries :  7501856 : Total  Size=   30175543 bytes  File Size  =     355091 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=  84.89     *
+*............................................................................*
+*Br   97 :el_sip    : el_sip/F                                               *
+*Entries :  7501856 : Total  Size=   30167533 bytes  File Size  =   27353211 *
+*Baskets :     1598 : Basket Size=      32000 bytes  Compression=   1.10     *
+*............................................................................*

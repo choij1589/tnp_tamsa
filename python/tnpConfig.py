@@ -55,25 +55,25 @@ class tnpConfig(object):
         elif key=="isSim":
             if val==False:
                 self.sample=self.data
-                for k in vars(self).keys():
+                for k in list(vars(self).keys()):
                     if k.startswith("data_"):
                         setattr(self,k[len("data_"):],getattr(self,k))
             elif val==True:
                 self.sample=self.sim
-                for k in vars(self).keys():
+                for k in list(vars(self).keys()):
                     if k.startswith("sim_"):
                         setattr(self,k[len("sim_"):],getattr(self,k))
         elif key=="systematic":
             if type(val) is not list:
-                print "[tnpConfig.__setattr__] Error, 'systematic' should be a list"
+                print("[tnpConfig.__setattr__] Error, 'systematic' should be a list")
                 exit(1)
             for iset in range(len(val)):
                 if type(val[iset]) is not list:
-                    print "[tnpConfig.__setattr__] Error, 'systematic set {}' should be a list".format(iset)
+                    print("[tnpConfig.__setattr__] Error, 'systematic set {}' should be a list".format(iset))
                     exit(1)
                 for imem in range(len(val[iset])):
                     if type(val[iset][imem]) is not dict:
-                        print "[tnpConfig.__setattr__] Error, 'systematic set {} member {}' should be a dict".format(iset,imem)
+                        print("[tnpConfig.__setattr__] Error, 'systematic set {} member {}' should be a dict".format(iset,imem))
                         exit(1)
             val=copy.deepcopy(val)
         elif key=="bins":
@@ -82,8 +82,8 @@ class tnpConfig(object):
             ### first map nD bins in a single list
             for iv in range(len(bins)):
                 var = bins[iv]['var']
-                if not bins[iv].has_key('bins'):
-                    print 'bins is not complete for var %s' % var
+                if 'bins' not in bins[iv]:
+                    print('bins is not complete for var %s' % var)
                     return None
                 nb1D = len(bins[iv]['bins'])-1
 
@@ -129,7 +129,7 @@ class tnpConfig(object):
             for iv in  range(len(bins)):
                 listOfVars.append(bins[iv]['var'])
             self.vars=listOfVars
-            self.vartitles=[var['title'] if var.has_key("title") else var['var'] for var in bins]
+            self.vartitles=[var['title'] if "title" in var else var['var'] for var in bins]
             self.axes=bins
             val=listOfBins
         super(tnpConfig,self).__setattr__(key,val)
@@ -140,7 +140,7 @@ class tnpConfig(object):
         if len(args)==1 and type(args[0]) in [list,tuple]: vals=args[0]
         else: vals=args
         if len(vals)!=len(self.axes):
-            print "find_bin needs same number of argument with the number of axes (={})".format(len(axes))
+            print("find_bin needs same number of argument with the number of axes (={})".format(len(axes)))
             exit(1)
         local_ibin=[]
         for ia in range(len(self.axes)):
@@ -156,7 +156,7 @@ class tnpConfig(object):
     def get_hist(self,ibin,isPass,genmatching=None,genmass=None,random=None):
         this_hist_file=self.path+"/"+self.hist_file
         if not os.path.exists(this_hist_file):
-            print "No file "+this_hist_file
+            print("No file "+this_hist_file)
             return None
         f=ROOT.TFile(this_hist_file)
         h=f.Get(self.get_histname(ibin,isPass,genmatching,genmass))
@@ -187,7 +187,7 @@ class tnpConfig(object):
 
     def get_eff(self,ibin):
         f=ROOT.TFile("/".join([self.path,self.fit_file]))
-        print self.name+"/"+self.bins[ibin]['name']+"_Canv" 
+        print(self.name+"/"+self.bins[ibin]['name']+"_Canv") 
         c=f.Get(self.name+"/"+self.bins[ibin]['name']+"_Canv")
         c.cd(1)
         words=c.GetPad(1).GetPrimitive("efficiency").GetLine(0).GetTitle().split()

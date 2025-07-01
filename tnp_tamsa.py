@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 ### python specific import
 import os,sys,argparse
@@ -48,14 +48,14 @@ def check_condor(clusterid,njob):
     for line in lines:
         words=line.split()
         if words[0]!="0":
-            print "[tnp_tamsa] Non-zero exit code. Check the log"
-            print words[2]
-            print words[1]
+            print("[tnp_tamsa] Non-zero exit code. Check the log")
+            print(words[2])
+            print(words[1])
             return False
         if os.system("grep -q 'Error in' {}".format(words[2]))==0:
-            print "[tnp_tamsa] Error occurs. Check the log"
-            print words[2]
-            print words[1]
+            print("[tnp_tamsa] Error occurs. Check the log")
+            print(words[2])
+            print(words[1])
             return False
     return True
 
@@ -68,13 +68,13 @@ def submit_condor(jdspath):
 ####################################################################
 ## time stamp
 startTime = time.time()
-print 'Starts at', time.strftime('%c', time.localtime(startTime))
+print('Starts at', time.strftime('%c', time.localtime(startTime)))
 
 ## check step argument
 args.step=args.step.lower().split(",")
 for step in args.step:
     if step not in ["hist","fit","sum"]:
-        print "[tnp_tamsa] Unknown step "+step
+        print("[tnp_tamsa] Unknown step "+step)
         exit(1)
 
 ## check bins argument
@@ -86,14 +86,14 @@ importSetting = 'import %s as tnpConf' % args.settings.replace('/','.').split('.
 exec(importSetting)
 
 if not args.config in tnpConf.Configs.keys():
-    print '[tnp_tamsa] config %s not found in config definitions' % args.config
-    print '  --> define in settings first'
-    print '  In settings I found configs: '
+    print('[tnp_tamsa] config %s not found in config definitions' % args.config)
+    print('  --> define in settings first')
+    print('  In settings I found configs: ')
     for key in sorted(tnpConf.Configs.keys()):
-        print key
+        print(key)
     exit(1)
 
-print '[tnp_tamsa] Use Configs["{}"] from {}'.format(args.config,args.settings)
+print('[tnp_tamsa] Use Configs["{}"] from {}'.format(args.config,args.settings))
 config=tnpConf.Configs[args.config]
 if hasattr(tnpConf,'OutputDir'):
     config.path=tnpConf.OutputDir+"/"+args.config
@@ -110,8 +110,8 @@ args.njob=[int(i) for i in args.njob.split(",")]
 ####################################################################
 if args.checkBins:
     for ib in range(len(config.bins)):
-        print config.bins[ib]['name']
-        print '  - cut: ',config.bins[ib]['cut']
+        print(config.bins[ib]['name'])
+        print('  - cut: ',config.bins[ib]['cut'])
     sys.exit(0)
 
 ####################################################################
@@ -138,7 +138,7 @@ if "hist" in args.step:
         for iconf in range(len(hist_configs)):
             if args.set!=None and args.set!=iconf: continue
             hist_config=hist_configs[iconf]
-            print '[Histogram] Create histograms for {}'.format(hist_config[0].sample)
+            print('[Histogram] Create histograms for {}'.format(hist_config[0].sample))
             jobbatchname='{}_{}_{}'.format(os.path.basename(args.settings).split(".",1)[0],args.config,hist_config[0].hist_file.split(".",1)[0])
             working_dir="/".join([hist_config[0].path,hist_config[0].hist_file.replace(".root",".d")])
             os.system('mkdir -p '+working_dir)
@@ -146,7 +146,8 @@ if "hist" in args.step:
             open(working_dir+'/run.sh','w').write(
 '''#!/bin/bash
 cd $TNP_BASE
-python tnp_tamsa.py {} {} --step hist --set {} --njob {} --ijob $1 --reduction {} --no-condor
+source setup.sh
+python3 tnp_tamsa.py {} {} --step hist --set {} --njob {} --ijob $1 --reduction {} --no-condor
 exit $?
 '''.format(args.settings,args.config,iconf,njob,args.reduction)
             )
@@ -167,14 +168,14 @@ queue {3}
             )
 
             clusterid=submit_condor(working_dir+'/condor.jds')
-            print '  Submit', njob, 'jobs. Waiting...'
+            print('  Submit', njob, 'jobs. Waiting...')
             os.system('condor_wait '+working_dir+'/condor.log > /dev/null')
             if not check_condor(clusterid,njob):
                 exit(1)
             outfiles=["{}/job{}.root".format(working_dir,i) for i in range(njob)]
             exitcode=os.system('condor_run -a jobbatchname={} -a request_cpus=4 -a concurrency_limits=n32.tnphadd hadd -j 4 -f {} {} > /dev/null'.format(jobbatchname+"_hadd","/".join([hist_config[0].path,hist_config[0].hist_file]),' '.join(outfiles)))
             if exitcode!=0:
-                print "hadd failed"
+                print("hadd failed")
                 exit(exitcode)
             os.system('rm {}'.format(" ".join(outfiles)))
             if not args.log:
@@ -190,7 +191,7 @@ if "fit" in args.step:
     configs=config.make_systematics()
     if args.condor==False:
         if not args.isSim and not args.isData:
-            print "Wrong"
+            print("Wrong")
             exit(1)
         for ibin in args.bins:
             fitter=tnpFitter(configs[args.set][args.member].clone(isSim=args.isSim))
@@ -210,7 +211,7 @@ if "fit" in args.step:
                     open(working_dir+'/run.sh','w').write(
 '''#!/bin/bash
 cd $TNP_BASE
-python tnp_tamsa.py {} {} --step fit --set {} --member {} {} --bin $1 --no-condor
+python3 tnp_tamsa.py {} {} --step fit --set {} --member {} {} --bin $1 --no-condor
 exit $?
 '''.format(args.settings,args.config,iset,imem,"--sim" if isSim else "--data")
                     )
@@ -232,10 +233,10 @@ queue arguments from (
 )
 '''.format(working_dir,"n{}.{}".format(args.nmax,os.getenv("USER")),jobbatchname,"\n".join(condor_arguments))
                     )
-                    print '[Fitting] {} {}'.format(c.fit_file.split(".",1)[0],c.name)
+                    print('[Fitting] {} {}'.format(c.fit_file.split(".",1)[0],c.name))
                     clusterid=submit_condor(working_dir+'/condor.jds')
                     condorlogs[clusterid]=working_dir+'/condor.log'
-        print '  Waiting...'
+        print('  Waiting...')
         for clusterid in condorlogs:
             os.system('condor_wait '+condorlogs[clusterid]+' > /dev/null')
             if not check_condor(clusterid,njob):
@@ -269,17 +270,17 @@ queue arguments from (
 #flag.fitFile='%s/%s_fit.root' % ( outputDirectory,args.flag )
 if "sum" in args.step:
     from efficiencyUtils import make_combined_hist
-    print '[Summary] collectFits {}'.format(config.data_fit_file)
+    print('[Summary] collectFits {}'.format(config.data_fit_file))
     #exitcode=os.system("python python/collectFits.py {0}/{1} $(find {0}/{2} -type f -name '*.root'|sort -V) > /dev/null 2>&1".format(config.path,config.data_fit_file,config.data_fit_file.replace(".root",".d")))
-    exitcode=os.system("python python/collectFits.py {0}/{1} {0}/{2}".format(config.path,config.data_fit_file,config.data_fit_file.replace(".root",".d")))
+    exitcode=os.system("python3 python/collectFits.py {0}/{1} {0}/{2}".format(config.path,config.data_fit_file,config.data_fit_file.replace(".root",".d")))
     if exitcode!=0:
-        print "hadd failed (exit {})".format(exitcode)
+        print("hadd failed (exit {})".format(exitcode))
         exit(exitcode)
-    print '[Summary] collectFits {}'.format(config.sim_fit_file)
+    print('[Summary] collectFits {}'.format(config.sim_fit_file))
     #exitcode=os.system("python python/collectFits.py {0}/{1} $(find {0}/{2} -type f -name '*.root'|sort -V) > /dev/null 2>&1".format(config.path,config.sim_fit_file,config.sim_fit_file.replace(".root",".d")))
-    exitcode=os.system("python python/collectFits.py {0}/{1} {0}/{2}".format(config.path,config.sim_fit_file,config.sim_fit_file.replace(".root",".d")))
+    exitcode=os.system("python3 python/collectFits.py {0}/{1} {0}/{2}".format(config.path,config.sim_fit_file,config.sim_fit_file.replace(".root",".d")))
     if exitcode!=0:
-        print "hadd failed"
+        print("hadd failed")
         exit(exitcode)
 
     hists=[]
@@ -317,15 +318,15 @@ if "sum" in args.step:
         h.Write()
     f.Close()
 
-    print '[Summary] Save plots'
+    print('[Summary] Save plots')
     from plotUtils import SavePlots
     SavePlots(config.path+"/efficiency.root")
 
     if "fix_ptbelow20" in config.option:
-        print '[Summary] post-process for "fix_ptbelow20"'
+        print('[Summary] post-process for "fix_ptbelow20"')
         from PostProcess_fix_ptbelow20 import PostProcess_fix_ptbelow20
         PostProcess_fix_ptbelow20(config.path+"/efficiency.root")
         
 endTime=time.time()
-print 'Ends at ', time.strftime('%c',time.localtime(endTime))
-print 'Time took', endTime-startTime,'seconds.'
+print('Ends at ', time.strftime('%c',time.localtime(endTime)))
+print('Time took', endTime-startTime,'seconds.')

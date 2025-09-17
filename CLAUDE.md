@@ -130,3 +130,9 @@ Supports up to 3D efficiency measurements with automatic histogram creation and 
 
 ### Data/MC Scale Factors
 Automatically computes scale factors by dividing data efficiencies by MC efficiencies, with proper error propagation.
+
+## Best Practices and Workflow Tips
+
+### Python and Environment Setup
+- Always do `source setup.sh` first to set up the correct environment
+- Use `python3` for executing Python scripts in this repository

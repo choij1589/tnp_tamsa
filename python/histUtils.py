@@ -47,7 +47,9 @@ def smearNegativeBins(h):
                 h.SetBinError(k,math.sqrt(h.GetBinError(k)**2+smear_error2*smear_weights[j]))
             remain_content=remain_content-smear_content
             remain_error2=remain_error2-smear_error2
-            if remain_error2<0 and abs(remain_error2)<1e-6: remain_error2=0
+            if remain_error2<0:
+                print(f"Warning: remain_error2 = {remain_error2} < 0 in bin {i}, setting to 0")
+                remain_error2=0
             h.SetBinContent(i,-remain_content)
             h.SetBinError(i,math.sqrt(remain_error2))
     return
@@ -260,6 +262,9 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
             for ih in range(len(hists[ic][ib])):
                 weight = weight_formulars[ic][ih].EvalInstance()
                 if not weight: continue
+                if weight > 1e10:
+                    print('Error: weight > 1e10!!! continue')
+                    continue
                 if math.isnan(weight):
                     print('Error: nan weight!!! continue')
                     continue

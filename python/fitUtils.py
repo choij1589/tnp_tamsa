@@ -67,8 +67,8 @@ class tnpFitter(object):
         if not histFail:
             print("No hist "+config.get_histname(ibin,True,genmatching=matched,genmass="genmass" in method)+" in "+config.hist_file)
             exit(1)
-        work.Import(rt.RooDataHist("histPass","histPass",x,histPass))
-        work.Import(rt.RooDataHist("histFail","histFail",x,histFail))
+        work.Import(rt.RooDataHist("histPass","histPass",rt.RooArgList(x),histPass))
+        work.Import(rt.RooDataHist("histFail","histFail",rt.RooArgList(x),histFail))
         isFit=False
         if "softfit" in method:
             if histPass.GetEffectiveEntries()>100 and histFail.GetEffectiveEntries()>100:
@@ -92,7 +92,7 @@ class tnpFitter(object):
                                 continue
                             if key in " ".join(config.fit_parameter) or key in ["histPass_genmatching","histFail_genmatching","histPass_notgenmatching","histFail_notgenmatching"]:
                                 hist=sim_config.get_hist(ibin,isPass=spass=="Pass",genmatching=matched,genmass=sgen=="_genmass",random=hash(config.path+str(ibin)) if srandom=="_random" else None)
-                                work.Import(rt.RooDataHist(key,key,x,hist))
+                                work.Import(rt.RooDataHist(key,key,rt.RooArgList(x),hist))
 
             for line in config.fit_parameter:
                 words=line.split()
@@ -120,13 +120,24 @@ class tnpFitter(object):
             xarg=rt.RooArgSet(x)        
 
             ## initial fit
-            if not all([p.isConstant() for p in work.pdf("sigPass").getParameters(xarg)]):
+            sigPass_params = rt.RooArgSet()
+            work.pdf("sigPass").getParameters(xarg, sigPass_params)
+            if not all([p.isConstant() for p in sigPass_params]):
                 result=work.pdf("sigPass").fitTo(work.data("histPass_genmatching"),rt.RooFit.Range("fit_range"),rt.RooFit.Save(True),rt.RooFit.PrintLevel(-1),rt.RooFit.Minimizer("Minuit2","migrad"))
-            if not all([p.isConstant() for p in work.pdf("bkgPass").getParameters(xarg)]):
+            
+            bkgPass_params = rt.RooArgSet()
+            work.pdf("bkgPass").getParameters(xarg, bkgPass_params)
+            if not all([p.isConstant() for p in bkgPass_params]):
                 result=work.pdf("bkgPass").fitTo(work.data("histPass_notgenmatching"),rt.RooFit.Range("fit_range"),rt.RooFit.Save(True),rt.RooFit.PrintLevel(-1),rt.RooFit.Minimizer("Minuit2","migrad"))
-            if not all([p.isConstant() for p in work.pdf("sigFail").getParameters(xarg)]):
+            
+            sigFail_params = rt.RooArgSet()
+            work.pdf("sigFail").getParameters(xarg, sigFail_params)
+            if not all([p.isConstant() for p in sigFail_params]):
                 result=work.pdf("sigFail").fitTo(work.data("histFail_genmatching"),rt.RooFit.Range("fit_range"),rt.RooFit.Save(True),rt.RooFit.PrintLevel(-1),rt.RooFit.Minimizer("Minuit2","migrad"))
-            if not all([p.isConstant() for p in work.pdf("bkgFail").getParameters(xarg)]):
+            
+            bkgFail_params = rt.RooArgSet()
+            work.pdf("bkgFail").getParameters(xarg, bkgFail_params)
+            if not all([p.isConstant() for p in bkgFail_params]):
                 result=work.pdf("bkgFail").fitTo(work.data("histFail_notgenmatching"),rt.RooFit.Range("fit_range"),rt.RooFit.Save(True),rt.RooFit.PrintLevel(-1),rt.RooFit.Minimizer("Minuit2","migrad"))
                             
             if hasattr(config,"option") and "saveprefit" in config.option:
@@ -147,9 +158,15 @@ class tnpFitter(object):
                 plotPass_init.Draw()
                 c_init.cd(2)
                 plotFail_init.Draw()
-                plotpath="/".join([config.path,"plots","sim" if config.isSim else "data",config.name])
+                # Extract bin number from binname (e.g., bin00 from bin00_el_sc_eta_...)
+                bin_num = binname.split('_')[0]  # e.g., bin00
+                # Extract variable part (everything after bin number)
+                var_part = '_'.join(binname.split('_')[1:])  # e.g., el_sc_eta_m2p50Tom2p00_el_pt_10p00To15p00
+                
+                plotpath="/".join([config.path,"plots","sim" if config.isSim else "data",bin_num])
                 os.system("mkdir -p "+plotpath)
-                c_init.SaveAs("{}/{}_init.png".format(plotpath,binname))
+                filename = "{}_{}_init.png".format(var_part, config.name)
+                c_init.SaveAs("{}/{}".format(plotpath,filename))
 
 
             resultPass=self.fit_hist(work.pdf("pdfPass"),work.data("histPass"),work,histPass.Integral())
@@ -182,20 +199,24 @@ class tnpFitter(object):
             fit_valp=work.var("nSigP").getVal()
             fit_errp=work.var("nSigP").getError()
             ## fit errors should be scaled. See comment on fitTo function.
-            fit_errp*=(histPass.Integral()/histPass.GetEffectiveEntries())**0.5
+            if histPass.GetEffectiveEntries() > 0:
+                fit_errp*=(histPass.Integral()/histPass.GetEffectiveEntries())**0.5
             ## prevent from unreasonably small error
             if resultPass.status()!=0:
                 naive_err=(fit_valp+histPass.Integral())**0.5
-                naive_err*=(histPass.Integral()/histPass.GetEffectiveEntries())**0.5
+                if histPass.GetEffectiveEntries() > 0:
+                    naive_err*=(histPass.Integral()/histPass.GetEffectiveEntries())**0.5
                 fit_errp=max(fit_errp,naive_err)
             fit_valf=work.var("nSigF").getVal()
             fit_errf=work.var("nSigF").getError()
             ## fit errors should be scaled. See comment on fitTo function.
-            fit_errf*=(histFail.Integral()/histFail.GetEffectiveEntries())**0.5
+            if histFail.GetEffectiveEntries() > 0:
+                fit_errf*=(histFail.Integral()/histFail.GetEffectiveEntries())**0.5
             ## prevent from unreasonably small error
             if resultFail.status()!=0:
                 naive_err=(fit_valf+histFail.Integral())**0.5
-                naive_err*=(histFail.Integral()/histFail.GetEffectiveEntries())**0.5
+                if histFail.GetEffectiveEntries() > 0:
+                    naive_err*=(histFail.Integral()/histFail.GetEffectiveEntries())**0.5
                 fit_errf=max(fit_errf,naive_err)
             
             resultPass.floatParsFinal().find("nSigP").setError(fit_errp)
@@ -280,11 +301,25 @@ class tnpFitter(object):
         if isFit:
             resultPass.Write("{}_resP".format(binname))
             resultFail.Write("{}_resF".format(binname))
+            
+            # Store fit status information
+            fit_status_pass = rt.TVectorF(1)
+            fit_status_fail = rt.TVectorF(1)
+            fit_status_pass[0] = resultPass.status()
+            fit_status_fail[0] = resultFail.status()
+            fit_status_pass.Write("{}_statusP".format(binname))
+            fit_status_fail.Write("{}_statusF".format(binname))
         fout.Close()
 
-        plotpath="/".join([config.path,"plots","sim" if config.isSim else "data",config.name])
+        # Extract bin number from binname (e.g., bin00 from bin00_el_sc_eta_...)
+        bin_num = binname.split('_')[0]  # e.g., bin00
+        # Extract variable part (everything after bin number)
+        var_part = '_'.join(binname.split('_')[1:])  # e.g., el_sc_eta_m2p50Tom2p00_el_pt_10p00To15p00
+        
+        plotpath="/".join([config.path,"plots","sim" if config.isSim else "data",bin_num])
         os.system("mkdir -p "+plotpath)
-        c.SaveAs("{}/{}.png".format(plotpath,binname))
+        filename = "{}_{}.png".format(var_part, config.name)
+        c.SaveAs("{}/{}".format(plotpath,filename))
 
         return
 

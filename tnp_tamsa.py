@@ -44,7 +44,7 @@ args = parser.parse_args()
 ####################################################################
 def check_condor(clusterid,njob):
     os.system("sleep 2")
-    lines=os.popen("condor_history {} -limit {} -scanlimit 20000 -af exitcode out err".format(clusterid,njob)).read().splitlines()
+    lines=os.popen(f"condor_history {clusterid} -limit {njob} -scanlimit 20000 -af exitcode out err").read().splitlines()
     for line in lines:
         words=line.split()
         if words[0]!="0":
@@ -52,7 +52,7 @@ def check_condor(clusterid,njob):
             print(words[2])
             print(words[1])
             return False
-        if os.system("grep -q 'Error in' {}".format(words[2]))==0:
+        if os.system(f"grep -q 'Error in' {words[2]}") == 0:
             print("[tnp_tamsa] Error occurs. Check the log")
             print(words[2])
             print(words[1])
@@ -93,13 +93,13 @@ if not args.config in tnpConf.Configs.keys():
         print(key)
     exit(1)
 
-print('[tnp_tamsa] Use Configs["{}"] from {}'.format(args.config,args.settings))
+print(f'[tnp_tamsa] Use Configs["{args.config}"] from {args.settings}')
 config=tnpConf.Configs[args.config]
 if hasattr(tnpConf,'OutputDir'):
     config.path=tnpConf.OutputDir+"/"+args.config
 else:
     config.path="/".join([TNP_BASE,"results",os.path.basename(args.settings).split(".",1)[0],args.config])
-os.system("mkdir -p {}".format(config.path))
+os.system(f"mkdir -p {config.path}")
 with open(config.path+"/config.txt","w") as f:
     f.write(config.__str__())
 
@@ -138,33 +138,33 @@ if "hist" in args.step:
         for iconf in range(len(hist_configs)):
             if args.set!=None and args.set!=iconf: continue
             hist_config=hist_configs[iconf]
-            print('[Histogram] Create histograms for {}'.format(hist_config[0].sample))
-            jobbatchname='{}_{}_{}'.format(os.path.basename(args.settings).split(".",1)[0],args.config,hist_config[0].hist_file.split(".",1)[0])
+            print(f'[Histogram] Create histograms for {hist_config[0].sample}')
+            jobbatchname=f'{os.path.basename(args.settings).split(".",1)[0]}_{args.config}_{hist_config[0].hist_file.split(".",1)[0]}'
             working_dir="/".join([hist_config[0].path,hist_config[0].hist_file.replace(".root",".d")])
             os.system('mkdir -p '+working_dir)
 
             open(working_dir+'/run.sh','w').write(
-'''#!/bin/bash
+f'''#!/bin/bash
 cd $TNP_BASE
 source setup.sh
-python3 tnp_tamsa.py {} {} --step hist --set {} --njob {} --ijob $1 --reduction {} --no-condor
+python3 tnp_tamsa.py {args.settings} {args.config} --step hist --set {iconf} --njob {njob} --ijob $1 --reduction {args.reduction} --no-condor
 exit $?
-'''.format(args.settings,args.config,iconf,njob,args.reduction)
+'''
             )
             os.system("chmod +x "+working_dir+'/run.sh')
 
             open(working_dir+'/condor.jds','w').write(
-'''executable = {0}/run.sh
+f'''executable = {working_dir}/run.sh
 arguments = $(Process)
-output = {0}/job$(Process).out
-error = {0}/job$(Process).err
-log = {0}/condor.log
+output = {working_dir}/job$(Process).out
+error = {working_dir}/job$(Process).err
+log = {working_dir}/condor.log
 request_memory = 1500
-concurrency_limits = {1}
-jobbatchname = {2}
+concurrency_limits = n{args.nmax}.{os.getenv("USER")}
+jobbatchname = {jobbatchname}
 getenv = True
-queue {3}
-'''.format(working_dir,"n{}.{}".format(args.nmax,os.getenv("USER")),jobbatchname,njob)
+queue {njob}
+'''
             )
 
             clusterid=submit_condor(working_dir+'/condor.jds')
@@ -173,15 +173,15 @@ queue {3}
             if not check_condor(clusterid,njob):
                 exit(1)
             outfiles=["{}/job{}.root".format(working_dir,i) for i in range(njob)]
-            exitcode=os.system('condor_run -a jobbatchname={} -a request_cpus=4 -a concurrency_limits=n32.tnphadd hadd -j 4 -f {} {} > /dev/null'.format(jobbatchname+"_hadd","/".join([hist_config[0].path,hist_config[0].hist_file]),' '.join(outfiles)))
+            exitcode=os.system(f'condor_run -a jobbatchname={jobbatchname}_hadd -a request_cpus=4 -a concurrency_limits=n32.tnphadd hadd -j 4 -f {"/".join([hist_config[0].path,hist_config[0].hist_file])} {" ".join(outfiles)} > /dev/null')
             if exitcode!=0:
                 print("hadd failed")
                 exit(exitcode)
-            os.system('rm {}'.format(" ".join(outfiles)))
+            os.system(f'rm {" ".join(outfiles)}')
             if not args.log:
                 os.system("rm -r "+working_dir)
             histUtils.postProcess("/".join([hist_config[0].path,hist_config[0].hist_file]))
-
+ 
 ####################################################################
 ##### Actual Fitter
 ####################################################################
@@ -204,36 +204,36 @@ if "fit" in args.step:
                 if args.member and args.member!=imem: continue
                 for isSim in [False,True]:
                     c=configs[iset][imem].clone(isSim=isSim)
-                    jobbatchname='{}_{}_{}_{}'.format(os.path.basename(args.settings).split(".",1)[0],args.config,c.fit_file.split(".",1)[0],c.name)
+                    jobbatchname=f'{os.path.basename(args.settings).split(".",1)[0]}_{args.config}_{c.fit_file.split(".",1)[0]}_{c.name}'
                     working_dir="/".join([c.path,c.fit_file.replace(".root",".d"),c.name])
                     os.system('mkdir -p '+working_dir)
 
                     open(working_dir+'/run.sh','w').write(
-'''#!/bin/bash
+f'''#!/bin/bash
 cd $TNP_BASE
-python3 tnp_tamsa.py {} {} --step fit --set {} --member {} {} --bin $1 --no-condor
+python3 tnp_tamsa.py {args.settings} {args.config} --step fit --set {iset} --member {imem} {"--sim" if isSim else "--data"} --bin $1 --no-condor
 exit $?
-'''.format(args.settings,args.config,iset,imem,"--sim" if isSim else "--data")
+'''
                     )
                     os.system("chmod +x "+working_dir+'/run.sh')
                     
                     njob=min(args.njob[-1],len(c.bins))
                     condor_arguments=[",".join([str(i) for i in range(len(c.bins)) if i%njob==j]) for j in range(njob)]
                     open(working_dir+'/condor.jds','w').write(
-'''executable = {0}/run.sh
+f'''executable = {working_dir}/run.sh
 arguments = $(Process)
-output = {0}/job$(Process).out
-error = {0}/job$(Process).err
-log = {0}/condor.log
-concurrency_limits = {1}
-jobbatchname = {2}
+output = {working_dir}/job$(Process).out
+error = {working_dir}/job$(Process).err
+log = {working_dir}/condor.log
+concurrency_limits = n{args.nmax}.{os.getenv("USER")}
+jobbatchname = {jobbatchname}
 getenv = True
 queue arguments from (
-{3}
+{chr(10).join(condor_arguments)}
 )
-'''.format(working_dir,"n{}.{}".format(args.nmax,os.getenv("USER")),jobbatchname,"\n".join(condor_arguments))
+'''
                     )
-                    print('[Fitting] {} {}'.format(c.fit_file.split(".",1)[0],c.name))
+                    print(f'[Fitting] {c.fit_file.split(".",1)[0]} {c.name}')
                     clusterid=submit_condor(working_dir+'/condor.jds')
                     condorlogs[clusterid]=working_dir+'/condor.log'
         print('  Waiting...')
@@ -270,15 +270,15 @@ queue arguments from (
 #flag.fitFile='%s/%s_fit.root' % ( outputDirectory,args.flag )
 if "sum" in args.step:
     from efficiencyUtils import make_combined_hist
-    print('[Summary] collectFits {}'.format(config.data_fit_file))
+    print(f'[Summary] collectFits {config.data_fit_file}')
     #exitcode=os.system("python python/collectFits.py {0}/{1} $(find {0}/{2} -type f -name '*.root'|sort -V) > /dev/null 2>&1".format(config.path,config.data_fit_file,config.data_fit_file.replace(".root",".d")))
-    exitcode=os.system("python3 python/collectFits.py {0}/{1} {0}/{2}".format(config.path,config.data_fit_file,config.data_fit_file.replace(".root",".d")))
+    exitcode=os.system(f"python3 python/collectFits.py {config.path}/{config.data_fit_file} {config.path}/{config.data_fit_file.replace('.root', '.d')}")
     if exitcode!=0:
-        print("hadd failed (exit {})".format(exitcode))
+        print(f"hadd failed (exit {exitcode})")
         exit(exitcode)
-    print('[Summary] collectFits {}'.format(config.sim_fit_file))
+    print(f'[Summary] collectFits {config.sim_fit_file}')
     #exitcode=os.system("python python/collectFits.py {0}/{1} $(find {0}/{2} -type f -name '*.root'|sort -V) > /dev/null 2>&1".format(config.path,config.sim_fit_file,config.sim_fit_file.replace(".root",".d")))
-    exitcode=os.system("python3 python/collectFits.py {0}/{1} {0}/{2}".format(config.path,config.sim_fit_file,config.sim_fit_file.replace(".root",".d")))
+    exitcode=os.system(f"python3 python/collectFits.py {config.path}/{config.sim_fit_file} {config.path}/{config.sim_fit_file.replace('.root', '.d')}")
     if exitcode!=0:
         print("hadd failed")
         exit(exitcode)

@@ -73,8 +73,6 @@ fit_altsig = [
     "RooCBShape::sigResFail(x,meanF[-0.0,-5.0,5.0],sigmaF[1,0.3,10.0],alphaF[2.0,1.2,3.5],nF[3,-5,5])",
     "FCONV::sigPass(x, sigPhysPass , sigResPass)",
     "FCONV::sigFail(x, sigPhysFail , sigResFail)",
-    #"sigFracF[0.5, 0., 1.]",
-    #"Gaussian::sigGaussFail(x,meanGF[80.,70.,100.],sigmaGF[15,5.,125.])",
     "RooCMSShape::bkgPass(x, aCMSP[60., 50.,100.],bCMSP[0.03, 0.01,0.5],cCMSP[0.03, -0.1,1.0],peakCMSP[90.0])",
     "RooCMSShape::bkgFail(x, aCMSF[60., 50.,100.],bCMSF[0.03, 0.01,0.5],cCMSF[0.03, -0.1,1.0],peakCMSF[90.0])",
 ]

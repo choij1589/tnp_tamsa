@@ -266,41 +266,46 @@ def main():
     else:
         print(f"Found {total_problems} problems that need attention:\n")
         
+        # Sort function to sort by bin number
+        def sort_by_bin_number(item):
+            bin_part = item.split('/')[0]  # get binX part
+            return int(bin_part.replace('bin', ''))
+
         if problems['data_missing']:
             print(f"DATA - Missing fit results ({len(problems['data_missing'])} bins):")
-            for item in problems['data_missing']:
+            for item in sorted(problems['data_missing'], key=sort_by_bin_number):
                 print(f"  - {item}")
             print()
-        
+
         if problems['data_bad_status']:
             print(f"DATA - Bad fit status ({len(problems['data_bad_status'])} bins):")
-            for item in problems['data_bad_status']:
+            for item in sorted(problems['data_bad_status'], key=sort_by_bin_number):
                 print(f"  - {item}")
             print()
-        
+
         if problems['data_large_eff_diff']:
             print(f"DATA - Large efficiency difference from nominal ({len(problems['data_large_eff_diff'])} bins):")
             print("  (difference > 0.1)")
-            for item in problems['data_large_eff_diff']:
+            for item in sorted(problems['data_large_eff_diff'], key=sort_by_bin_number):
                 print(f"  - {item}")
             print()
-        
+
         if problems['sim_missing']:
             print(f"SIM - Missing fit results ({len(problems['sim_missing'])} bins):")
-            for item in problems['sim_missing']:
+            for item in sorted(problems['sim_missing'], key=sort_by_bin_number):
                 print(f"  - {item}")
             print()
-        
+
         if problems['sim_bad_status']:
             print(f"SIM - Bad fit status ({len(problems['sim_bad_status'])} bins):")
-            for item in problems['sim_bad_status']:
+            for item in sorted(problems['sim_bad_status'], key=sort_by_bin_number):
                 print(f"  - {item}")
             print()
-        
+
         if problems['sim_large_eff_diff']:
             print(f"SIM - Large efficiency difference from nominal ({len(problems['sim_large_eff_diff'])} bins):")
             print("  (difference > 0.05)")
-            for item in problems['sim_large_eff_diff']:
+            for item in sorted(problems['sim_large_eff_diff'], key=sort_by_bin_number):
                 print(f"  - {item}")
             print()
     

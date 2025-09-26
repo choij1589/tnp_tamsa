@@ -53,8 +53,8 @@ fit_nominal = [
     "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[1.4,0.1,4.0])",
     "FCONV::sigPass(x, sigPhysPass , sigResPass)",
     "FCONV::sigFail(x, sigPhysFail , sigResFail)",
-    "RooCMSShape::bkgPass(x, aCMSP[60.,40.,80.],bCMSP[0.1,0.01,0.25],cCMSP[0.05, -0.1,0.2],peakCMSP[90.0])",
-    "RooCMSShape::bkgFail(x, aCMSF[60.,50.,90.],bCMSF[0.1,0.01,0.25],cCMSF[0.05, -0.1,0.2],peakCMSF[90.0])",
+    "RooCMSShape::bkgPass(x, aCMSP[60.,50.,80.],bCMSP[0.1,0.01,0.25],cCMSP[0.05, -0.1,0.2],peakCMSP[90.0])",
+    "RooCMSShape::bkgFail(x, aCMSF[60.,50.,80.],bCMSF[0.1,0.01,0.25],cCMSF[0.05, -0.1,0.2],peakCMSF[90.0])",
 ]
 
 fit_altsig = [
@@ -65,7 +65,7 @@ fit_altsig = [
     "FCONV::sigPass(x, sigPhysPass , sigResPass)",
     "FCONV::sigFail(x, sigPhysFail , sigResFail)",
     "RooCMSShape::bkgPass(x, aCMSP[60.,40.,80.],bCMSP[0.1, 0.01,0.25],cCMSP[0.05, -0.1,0.2],peakCMSP[90.0])",
-    "RooCMSShape::bkgFail(x, aCMSF[60.,50.,90.],bCMSF[0.1, 0.01,0.25],cCMSF[0.05, -0.1,0.2],peakCMSF[90.0])",
+    "RooCMSShape::bkgFail(x, aCMSF[60.,50.,80.],bCMSF[0.1, 0.01,0.25],cCMSF[0.05, -0.1,0.2],peakCMSF[90.0])",
 ]
 
 fit_altbkg = [

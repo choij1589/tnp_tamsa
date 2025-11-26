@@ -124,9 +124,9 @@ config = tnpConfig(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2016a"]}],
-        [{"title": "altTag", "expr": TagCut35}],
-        [{"title": "fitwindowup", "fit_range": (63, 123)},
-         {"title": "fitwindowdown", "fit_range": (57, 117)}],
+        #[{"title": "altTag", "expr": TagCut35}],
+        #[{"title": "fitwindowup", "fit_range": (63, 123)},
+        # {"title": "fitwindowdown", "fit_range": (57, 117)}],
     ],
 )
 Configs["TopHNT_2016a"] = config.clone()
@@ -137,9 +137,9 @@ Configs["TopHNT_2016b"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2016b"]}],
-        [{"title": "altTag", "expr": TagCut35}],
-        [{"title": "fitwindowup", "fit_range": (63, 123)},
-         {"title": "fitwindowdown", "fit_range": (57, 117)}],
+        #[{"title": "altTag", "expr": TagCut35}],
+        #[{"title": "fitwindowup", "fit_range": (63, 123)},
+        # {"title": "fitwindowdown", "fit_range": (57, 117)}],
     ],
 )
 Configs["TopHNT_2017"] = config.clone(
@@ -150,9 +150,9 @@ Configs["TopHNT_2017"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2017"]}],
-        [{"title": "altTag", "expr": TagCut40}],
-        [{"title": "fitwindowup", "fit_range": (63, 123)},
-         {"title": "fitwindowdown", "fit_range": (57, 117)}],
+        #[{"title": "altTag", "expr": TagCut40}],
+        #[{"title": "fitwindowup", "fit_range": (63, 123)},
+        # {"title": "fitwindowdown", "fit_range": (57, 117)}],
     ],
 )
 Configs["TopHNT_2018"] = config.clone(
@@ -163,9 +163,9 @@ Configs["TopHNT_2018"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2018"]}],
-        [{"title": "altTag", "expr": TagCut40}],
-        [{"title": "fitwindowup", "fit_range": (63, 123)},
-         {"title": "fitwindowdown", "fit_range": (57, 117)}],
+        #[{"title": "altTag", "expr": TagCut40}],
+        #[{"title": "fitwindowup", "fit_range": (63, 123)},
+        # {"title": "fitwindowdown", "fit_range": (57, 117)}],
     ],
 )
 

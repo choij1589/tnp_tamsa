@@ -137,8 +137,8 @@ config = tnpConfig(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2022"]}],
-        [{"title": "altTag", "expr": expr_alttag}],
-        [{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
+        #[{"title": "altTag", "expr": expr_alttag}],
+        #[{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
     ]
 )
 
@@ -149,8 +149,8 @@ Configs["TopHNT_2022"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2022"], "hist_nbins": 36}],
-        [{"title": "altTag", "expr": expr_alttag}],
-        [{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
+        #[{"title": "altTag", "expr": expr_alttag}],
+        #[{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
     ]
 )
 
@@ -161,8 +161,8 @@ Configs["TopHNT_2022EE"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2022EE"]}],
-        [{"title": "altTag", "expr": expr_alttag}],
-        [{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
+        #[{"title": "altTag", "expr": expr_alttag}],
+        #[{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
     ]
 )
 Configs["TopHNT_2023"] = config.clone(
@@ -172,8 +172,8 @@ Configs["TopHNT_2023"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2023"]}],
-        [{"title": "altTag", "expr": expr_alttag}],
-        [{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
+        #[{"title": "altTag", "expr": expr_alttag}],
+        #[{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
     ]
 )
 Configs["TopHNT_2023BPix"] = config.clone(
@@ -183,7 +183,7 @@ Configs["TopHNT_2023BPix"] = config.clone(
         [{"title": "altsig", "fit_parameter": fit_altsig}],
         [{"title": "altbkg", "fit_parameter": fit_altbkg}],
         [{"title": "altmc", "sim": samples["mg2023BPix"]}],
-        [{"title": "altTag", "expr": expr_alttag}],
-        [{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
+        #[{"title": "altTag", "expr": expr_alttag}],
+        #[{"title": "fitwindowup", "fit_range": (57, 117)}, {"title": "fitwindowdown", "fit_range": (63, 113)}]
     ]
 )

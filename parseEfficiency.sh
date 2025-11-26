@@ -17,6 +17,6 @@ fi
 mkdir -p ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT
 
 cp results/${CONFIG_El}/TopHNT_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_EleID.root
-cp results/${CONFIG_Mu}/NUM_TopHNT_DEN_TrackerMuons_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_MuID.root
-cp results/${CONFIG_Mu}/NUM_DLT_Mu17Leg_DEN_TopHNT_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_DLT_Mu17Leg.root
-cp results/${CONFIG_Mu}/NUM_DLT_Mu8Leg_DEN_TopHNT_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_DLT_Mu8Leg.root
+#cp results/${CONFIG_Mu}/NUM_TopHNT_DEN_TrackerMuons_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_MuID.root
+#cp results/${CONFIG_Mu}/NUM_DLT_Mu17Leg_DEN_TopHNT_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_DLT_Mu17Leg.root
+#cp results/${CONFIG_Mu}/NUM_DLT_Mu8Leg_DEN_TopHNT_${ERA}/efficiency.root ~/Sync/workspace/ChargedHiggsAnalysisV3/MeasTrigEff/results/${ERA}/ROOT/efficiency_DLT_Mu8Leg.root
